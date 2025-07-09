@@ -1,0 +1,90 @@
+{
+  "articles": [
+    {
+      "slug": "how-to-build-webapps-that-scale",
+      "title": "How to build webapps that scale",
+      "description": "Web development is an important skill to learn",
+      "body": "# How to build webapps that scale\n\nBuilding scalable web applications requires careful planning and architecture decisions.\n\n## Key Principles\n\n- **Modularity**: Break your application into smaller, manageable modules\n- **Caching**: Implement proper caching strategies\n- **Database optimization**: Use efficient queries and proper indexing\n- **Load balancing**: Distribute traffic across multiple servers\n\n## Best Practices\n\n1. Use microservices architecture\n2. Implement proper error handling\n3. Monitor performance metrics\n4. Use CDN for static assets\n\n*Remember: Scalability is not just about handling more users, it's about maintaining performance under load.*",
+      "tagList": ["webdev", "scaling", "architecture"],
+      "createdAt": "2024-01-15T03:22:56.637Z",
+      "updatedAt": "2024-01-15T03:22:56.637Z",
+      "favorited": false,
+      "favoritesCount": 0,
+      "author": {
+        "username": "john.doe",
+        "bio": "Full stack developer with 10 years of experience",
+        "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+        "following": false
+      }
+    },
+    {
+      "slug": "react-best-practices",
+      "title": "React Best Practices for 2024",
+      "description": "Learn the latest React patterns and best practices",
+      "body": "# React Best Practices for 2024\n\nReact has evolved significantly, and here are the current best practices:\n\n## Functional Components\n\nAlways prefer functional components over class components:\n\n```jsx\nfunction MyComponent({ name }) {\n  return <div>Hello {name}</div>;\n}\n```\n\n## Hooks\n\nUse hooks for state management and side effects:\n\n- `useState` for local state\n- `useEffect` for side effects\n- `useContext` for global state\n- `useMemo` and `useCallback` for performance optimization\n\n## Performance\n\n- Use React.memo for expensive components\n- Implement proper key props in lists\n- Avoid anonymous functions in render\n- Use lazy loading for routes\n\n## Testing\n\nWrite comprehensive tests using:\n- Jest for unit tests\n- React Testing Library for integration tests\n- Cypress for end-to-end tests",
+      "tagList": ["react", "javascript", "frontend", "bestpractices"],
+      "createdAt": "2024-01-14T15:30:22.456Z",
+      "updatedAt": "2024-01-14T15:30:22.456Z",
+      "favorited": true,
+      "favoritesCount": 5,
+      "author": {
+        "username": "jane.smith",
+        "bio": "React enthusiast and frontend architect",
+        "image": "https://api.realworld.io/images/demo-avatar.png",
+        "following": true
+      }
+    },
+    {
+      "slug": "cypress-testing-guide",
+      "title": "Complete Cypress Testing Guide",
+      "description": "Master end-to-end testing with Cypress",
+      "body": "# Complete Cypress Testing Guide\n\nCypress is a powerful end-to-end testing framework that makes testing web applications easy and reliable.\n\n## Getting Started\n\n### Installation\n\n```bash\nnpm install --save-dev cypress\n```\n\n### Configuration\n\nCreate a `cypress.config.js` file:\n\n```javascript\nmodule.exports = {\n  e2e: {\n    baseUrl: 'http://localhost:3000',\n    supportFile: 'cypress/support/e2e.js'\n  }\n};\n```\n\n## Writing Tests\n\n### Basic Test Structure\n\n```javascript\ndescribe('My App', () => {\n  beforeEach(() => {\n    cy.visit('/');\n  });\n\n  it('should display welcome message', () => {\n    cy.contains('Welcome');\n  });\n});\n```\n\n### Best Practices\n\n1. **Use data attributes** for selecting elements\n2. **Create custom commands** for reusable actions\n3. **Implement page objects** for better organization\n4. **Use fixtures** for test data\n5. **Set up proper CI/CD** pipelines\n\n## Advanced Features\n\n- **Network stubbing**: Mock API responses\n- **Visual testing**: Screenshot comparisons\n- **Parallel execution**: Run tests in parallel\n- **Custom commands**: Extend Cypress functionality\n\n## CI/CD Integration\n\nIntegrate Cypress with your CI/CD pipeline:\n\n```yaml\n- name: Run Cypress tests\n  run: npx cypress run\n```\n\nCypress provides excellent developer experience and reliable test execution, making it the perfect choice for modern web applications.",
+      "tagList": ["cypress", "testing", "e2e", "automation", "javascript"],
+      "createdAt": "2024-01-13T09:15:33.789Z",
+      "updatedAt": "2024-01-13T09:15:33.789Z",
+      "favorited": false,
+      "favoritesCount": 12,
+      "author": {
+        "username": "testmaster",
+        "bio": "QA Engineer specializing in test automation",
+        "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+        "following": false
+      }
+    },
+    {
+      "slug": "javascript-async-patterns",
+      "title": "Modern JavaScript Async Patterns",
+      "description": "Understanding promises, async/await, and modern asynchronous patterns",
+      "body": "# Modern JavaScript Async Patterns\n\nAsynchronous programming is crucial for modern JavaScript applications. Let's explore the evolution and best practices.\n\n## Evolution of Async JavaScript\n\n### 1. Callbacks\n\n```javascript\nfunction fetchData(callback) {\n  setTimeout(() => {\n    callback(null, 'data');\n  }, 1000);\n}\n```\n\n**Problems**: Callback hell, error handling complexity\n\n### 2. Promises\n\n```javascript\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('data');\n    }, 1000);\n  });\n}\n```\n\n**Benefits**: Better error handling, chainable\n\n### 3. Async/Await\n\n```javascript\nasync function fetchData() {\n  try {\n    const data = await fetch('/api/data');\n    return data.json();\n  } catch (error) {\n    console.error('Error:', error);\n  }\n}\n```\n\n**Benefits**: Synchronous-looking code, easier debugging\n\n## Modern Patterns\n\n### Promise.all() for Concurrent Operations\n\n```javascript\nconst [users, posts, comments] = await Promise.all([\n  fetchUsers(),\n  fetchPosts(),\n  fetchComments()\n]);\n```\n\n### Promise.allSettled() for Resilient Operations\n\n```javascript\nconst results = await Promise.allSettled([\n  fetch('/api/endpoint1'),\n  fetch('/api/endpoint2'),\n  fetch('/api/endpoint3')\n]);\n```\n\n### Async Iterators\n\n```javascript\nasync function* generateData() {\n  for (let i = 0; i < 5; i++) {\n    yield await fetchData(i);\n  }\n}\n```\n\n## Best Practices\n\n1. **Always handle errors** in async functions\n2. **Use Promise.all()** for concurrent operations\n3. **Avoid blocking the main thread** with long-running operations\n4. **Use AbortController** for cancellation\n5. **Implement proper loading states** in UI\n\n## Performance Considerations\n\n- Use `Promise.all()` instead of sequential awaits\n- Implement request debouncing\n- Use pagination for large datasets\n- Implement proper caching strategies\n\nMastering these patterns will make your JavaScript applications more responsive and maintainable.",
+      "tagList": ["javascript", "async", "promises", "performance"],
+      "createdAt": "2024-01-12T14:45:18.123Z",
+      "updatedAt": "2024-01-12T14:45:18.123Z",
+      "favorited": true,
+      "favoritesCount": 8,
+      "author": {
+        "username": "jsexpert",
+        "bio": "JavaScript developer and technical writer",
+        "image": "https://api.realworld.io/images/demo-avatar.png",
+        "following": true
+      }
+    },
+    {
+      "slug": "web-security-essentials",
+      "title": "Web Security Essentials for Developers",
+      "description": "Essential security practices every web developer should know",
+      "body": "# Web Security Essentials for Developers\n\nSecurity should be a top priority in web development. Here are the essential practices every developer must know.\n\n## Common Vulnerabilities\n\n### 1. Cross-Site Scripting (XSS)\n\n**Prevention**:\n- Always sanitize user input\n- Use Content Security Policy (CSP)\n- Escape output properly\n\n```javascript\n// Bad\ndocument.innerHTML = userInput;\n\n// Good\ndocument.textContent = userInput;\n```\n\n### 2. Cross-Site Request Forgery (CSRF)\n\n**Prevention**:\n- Use CSRF tokens\n- Implement SameSite cookies\n- Validate referrer headers\n\n### 3. SQL Injection\n\n**Prevention**:\n- Use parameterized queries\n- Validate and sanitize input\n- Use ORM with proper escaping\n\n```sql\n-- Bad\nSELECT * FROM users WHERE id = '${userId}'\n\n-- Good\nSELECT * FROM users WHERE id = ?\n```\n\n## Authentication & Authorization\n\n### JWT Best Practices\n\n1. **Use short expiration times**\n2. **Implement refresh tokens**\n3. **Store tokens securely**\n4. **Use HTTPS only**\n\n```javascript\n// JWT implementation\nconst token = jwt.sign(\n  { userId: user.id },\n  process.env.JWT_SECRET,\n  { expiresIn: '15m' }\n);\n```\n\n### Password Security\n\n1. **Use bcrypt for hashing**\n2. **Implement password policies**\n3. **Use two-factor authentication**\n4. **Implement account lockout**\n\n## HTTPS & Transport Security\n\n### SSL/TLS Configuration\n\n- Use TLS 1.2 or higher\n- Implement HSTS headers\n- Use proper certificate validation\n- Enable OCSP stapling\n\n### Security Headers\n\n```javascript\n// Express.js example\napp.use((req, res, next) => {\n  res.setHeader('X-Frame-Options', 'DENY');\n  res.setHeader('X-Content-Type-Options', 'nosniff');\n  res.setHeader('X-XSS-Protection', '1; mode=block');\n  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');\n  next();\n});\n```\n\n## Input Validation\n\n### Client-Side Validation\n\n```javascript\nfunction validateEmail(email) {\n  const re = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  return re.test(email);\n}\n```\n\n### Server-Side Validation\n\n```javascript\nconst Joi = require('joi');\n\nconst schema = Joi.object({\n  email: Joi.string().email().required(),\n  password: Joi.string().min(8).required()\n});\n```\n\n## Data Protection\n\n### Encryption\n\n- Encrypt sensitive data at rest\n- Use proper key management\n- Implement field-level encryption\n\n### Privacy\n\n- Implement GDPR compliance\n- Use data minimization\n- Provide user data controls\n\n## Security Testing\n\n### Static Analysis\n\n- Use ESLint security rules\n- Implement SonarQube\n- Use Snyk for dependency scanning\n\n### Dynamic Testing\n\n- Implement security headers testing\n- Use OWASP ZAP for vulnerability scanning\n- Perform penetration testing\n\n## Conclusion\n\nSecurity is an ongoing process, not a one-time implementation. Stay updated with the latest security practices and always follow the principle of least privilege.\n\n**Remember**: Security is everyone's responsibility!",
+      "tagList": ["security", "webdev", "authentication", "encryption"],
+      "createdAt": "2024-01-11T11:20:45.567Z",
+      "updatedAt": "2024-01-11T11:20:45.567Z",
+      "favorited": false,
+      "favoritesCount": 15,
+      "author": {
+        "username": "securitypro",
+        "bio": "Cybersecurity expert and penetration tester",
+        "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+        "following": false
+      }
+    }
+  ],
+  "articlesCount": 5
+}

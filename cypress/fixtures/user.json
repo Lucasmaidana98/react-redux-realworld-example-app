@@ -1,0 +1,9 @@
+{
+  "user": {
+    "email": "test@example.com",
+    "token": "jwt.token.here",
+    "username": "testuser",
+    "bio": "I'm a test user for the RealWorld application",
+    "image": "https://api.realworld.io/images/demo-avatar.png"
+  }
+}
