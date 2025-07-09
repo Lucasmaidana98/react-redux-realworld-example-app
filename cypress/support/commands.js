@@ -8,7 +8,7 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-import 'cypress-file-upload'
+// import 'cypress-file-upload' // Commented out to avoid dependency issues
 
 // Authentication Commands
 Cypress.Commands.add('login', (email, password) => {

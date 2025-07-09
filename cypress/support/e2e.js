@@ -16,10 +16,24 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-// Import plugins
-import 'cypress-mochawesome-reporter/register'
-import 'cypress-terminal-report/src/installLogsCollector'
-import '@cypress/grep/src/support'
+// Import plugins - with error handling
+try {
+  require('cypress-mochawesome-reporter/register')
+} catch (e) {
+  console.log('Mochawesome reporter not available')
+}
+
+try {
+  require('cypress-terminal-report/src/installLogsCollector')
+} catch (e) {
+  console.log('Terminal report not available')
+}
+
+try {
+  require('@cypress/grep/src/support')
+} catch (e) {
+  console.log('Grep plugin not available')
+}
 
 // Global configuration
 Cypress.on('uncaught:exception', (err, runnable) => {

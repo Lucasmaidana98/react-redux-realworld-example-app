@@ -20,16 +20,16 @@ module.exports = defineConfig({
       openMode: 0
     },
     env: {
-      // Test users credentials
+      // Test users credentials - using demo credentials
       testUser: {
-        email: 'test@example.com',
-        password: 'testpassword123',
-        username: 'testuser'
+        email: 'demo@demo.com',
+        password: 'demopassword',
+        username: 'demo'
       },
       testUser2: {
-        email: 'test2@example.com',
-        password: 'testpassword123',
-        username: 'testuser2'
+        email: 'demo2@demo.com',
+        password: 'demopassword',
+        username: 'demo2'
       },
       // API configuration
       apiUrl: 'https://conduit.productionready.io/api',
@@ -42,14 +42,24 @@ module.exports = defineConfig({
       }
     },
     setupNodeEvents(on, config) {
-      // Terminal report plugin
-      require('cypress-terminal-report/src/installLogsPrinter')(on);
+      // Load plugins with error handling
+      try {
+        require('cypress-terminal-report/src/installLogsPrinter')(on);
+      } catch (e) {
+        console.log('Terminal report plugin not available');
+      }
       
-      // Mochawesome reporter configuration
-      require('cypress-mochawesome-reporter/plugin')(on);
+      try {
+        require('cypress-mochawesome-reporter/plugin')(on);
+      } catch (e) {
+        console.log('Mochawesome reporter plugin not available');
+      }
       
-      // Grep plugin for test filtering
-      require('@cypress/grep/src/plugin')(config);
+      try {
+        require('@cypress/grep/src/plugin')(config);
+      } catch (e) {
+        console.log('Grep plugin not available');
+      }
       
       // Custom tasks
       on('task', {
