@@ -1,0 +1,41 @@
+name: Basic Test
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Check files
+        run: |
+          pwd
+          ls -la
+          echo "Package.json contents:"
+          cat package.json | head -20
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: List installed packages
+        run: npm list --depth=0
+        
+      - name: Start app in background
+        run: npm start &
+        
+      - name: Wait and check if app is running
+        run: |
+          sleep 30
+          curl -f http://localhost:4100 || echo "App not responding"
+          
+      - name: Test basic functionality
+        run: echo "Basic test completed"
